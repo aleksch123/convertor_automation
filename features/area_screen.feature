@@ -32,8 +32,20 @@ Feature: User is able to convert area units
         When I click on From field
         And I press "12" on soft keyboard
         Then I get "12000000" in To field
- @wip
+
       Scenario:
         When I select "Hectare" from left column
-        Then I see "Hectare1" in From header
+        Then I see "Hectare" in From header
         And I get "10000" in To field
+  @wip
+      Scenario Outline: User is able to change units
+        Given I click on Clear button
+        When  I click on From field
+        And I press "1" on soft keyboard
+        Then I select "<target>" from right column
+        And  I get "<result>" in To field
+        Examples:
+          |target|result|
+          |Sq Kilometre |1|
+          |Sq Metre |1000000|
+          |Hectare |100|
